@@ -1,26 +1,36 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import './components/inputtextbox'
+import Textbox from './components/inputtextbox';
+import Outputbox from './components/output';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Header from './components/header';
+
+class App extends React.Component {
+  state = {
+    enteredbinary: ""
+  }
+
+  enteredBinary = (binary) => {
+
+    const b = parseInt(binary, 2);
+    this.setState({ enteredbinary: b });
+  }
+
+  render() {
+    return (
+      <div className="App" >
+        <Header />
+        <Textbox handlebinary={this.enteredBinary} />
+        <Outputbox decimal={this.state.enteredbinary} />
+      </div>
+
+    )
+  }
+
+
+
 }
+
 
 export default App;
